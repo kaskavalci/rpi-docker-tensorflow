@@ -3,13 +3,12 @@ FROM resin/rpi-raspbian
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         curl \
-        iblcms2-dev \
         libfreetype6-dev \
         libfreetype6-dev \
         libfribidi-dev \
         libharfbuzz-dev \
         libjpeg62-turbo-dev \
-        zlib1g-dev \
+        liblcms2-dev \
         libpng12-dev \
         libtiff5-dev \
         libwebp-dev \
@@ -26,6 +25,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         tcl8.6-dev \
         tk8.6-dev \
         unzip
+        zlib1g-dev \
 
 RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
