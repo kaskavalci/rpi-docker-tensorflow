@@ -3,8 +3,16 @@ FROM resin/rpi-raspbian
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         curl \
+        iblcms2-dev \
         libfreetype6-dev \
+        libfreetype6-dev \
+        libfribidi-dev \
+        libharfbuzz-dev \
+        libjpeg62-turbo-dev \
+        zlib1g-dev \
         libpng12-dev \
+        libtiff5-dev \
+        libwebp-dev \
         libzmq3-dev \
         pkg-config \
         protobuf-compiler \
@@ -12,21 +20,23 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python-dev \
         python-lxml \
         python-numpy \
-        python-pil \
         python-scipy \
+        python-tk \
         rsync \
+        tcl8.6-dev \
+        tk8.6-dev \
         unzip
-
-RUN  apt-get clean && \
-        rm -rf /var/lib/apt/lists/*
 
 RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
+    pip install --upgrade pip
         rm get-pip.py
 
-RUN pip --no-cache-dir install \
+RUN pip --no-cache-dir install --upgrade \
         ipykernel \
         jupyter \
+        wheel \
+        Pillow \
         matplotlib && \
             python -m ipykernel.kernelspec
 
