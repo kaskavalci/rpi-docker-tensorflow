@@ -7,9 +7,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libpng12-dev \
         libzmq3-dev \
         pkg-config \
+        protobuf-compiler \
         python \
         python-dev \
+        python-lxml \
         python-numpy \
+        python-pil \
         python-scipy \
         rsync \
         unzip
