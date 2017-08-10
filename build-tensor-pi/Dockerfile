@@ -24,7 +24,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         rsync \
         tcl8.6-dev \
         tk8.6-dev \
-        unzip
+        unzip \
         zlib1g-dev \
 
 RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
