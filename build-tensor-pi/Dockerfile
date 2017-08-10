@@ -29,7 +29,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
     python get-pip.py && \
-    pip install --upgrade pip
         rm get-pip.py
 
 RUN pip --no-cache-dir install --upgrade \
