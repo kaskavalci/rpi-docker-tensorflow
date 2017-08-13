@@ -19,6 +19,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python-dev \
         python-lxml \
         python-numpy \
+        python-pip \
         python-scipy \
         python-tk \
         rsync \
@@ -26,10 +27,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         tk8.6-dev \
         unzip \
         zlib1g-dev
-
-RUN curl -O https://bootstrap.pypa.io/get-pip.py && \
-    python get-pip.py && \
-        rm get-pip.py
 
 RUN pip --no-cache-dir install --upgrade \
         ipykernel \
@@ -39,9 +36,9 @@ RUN pip --no-cache-dir install --upgrade \
         matplotlib && \
             python -m ipykernel.kernelspec
 
-ADD tensorflow-0.10.0-cp27-none-linux_armv7l.whl .
-
-RUN pip install tensorflow-0.10.0-cp27-none-linux_armv7l.whl
+RUN wget https://github.com/samjabrahams/tensorflow-on-raspberry-pi/releases/download/v1.1.0/tensorflow-1.1.0-cp27-none-linux_armv7l.whl && \
+    sudo pip install tensorflow-1.1.0-cp27-none-linux_armv7l.whl && \
+    rm -rf tensorflow-1.1.0-cp27-none-linux_armv7l.whl
 
 COPY jupyter_notebook_config.py /root/.jupyter/
 
