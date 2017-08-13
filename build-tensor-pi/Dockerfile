@@ -18,7 +18,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         python \
         python-dev \
         python-lxml \
-        python-numpy \
         python-scipy \
         python-tk \
         rsync \
@@ -35,15 +34,16 @@ RUN pip --no-cache-dir install --upgrade \
         ipykernel \
         jupyter \
         wheel \
+        numpy \
         Pillow \
         matplotlib && \
     python -m ipykernel.kernelspec
 
-RUN curl -O -L https://github.com/samjabrahams/tensorflow-on-raspberry-pi/releases/download/v1.1.0/tensorflow-1.1.0-cp27-none-linux_armv7l.whl && \
+RUN pip uninstall mock && \
+    pip --no-cache-dir install mock && \
+    curl -O -L https://github.com/samjabrahams/tensorflow-on-raspberry-pi/releases/download/v1.1.0/tensorflow-1.1.0-cp27-none-linux_armv7l.whl && \
     pip install tensorflow-1.1.0-cp27-none-linux_armv7l.whl && \
     rm -rf tensorflow-1.1.0-cp27-none-linux_armv7l.whl && \
-    pip uninstall mock && \
-    pip --no-cache-dir install mock
 
 COPY jupyter_notebook_config.py /root/.jupyter/
 
